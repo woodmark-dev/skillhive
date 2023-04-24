@@ -5,7 +5,7 @@ export default function TeamCard() {
       <div className="avatar">
         <div className="w-36 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
           <Image
-            src="/images/ibrahim.jpg"
+            src="/images/ibrahim.JPG"
             alt="Server photo"
             width={450}
             height={500}
