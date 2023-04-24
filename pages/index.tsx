@@ -73,7 +73,7 @@ export default function Home({
       </div>
 
       <div
-        className="hero min-h-screen bg-white py-20 md:px-16 flex flex-col gap-24"
+        className="hero bg-white py-20 md:px-16 flex flex-col gap-24"
         id="the-team"
       >
         <div className="flex flex-col items-center">
@@ -82,7 +82,7 @@ export default function Home({
           </h1>
         </div>
 
-        <div className="relative flex overflow-x-hidden">
+        <div className="relative flex overflow-hidden w-screen">
           <div className="animate-marquee whitespace-nowrap">
             <TeamCard />
             <TeamCard />
