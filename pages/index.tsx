@@ -1,65 +1,73 @@
-import Image from "next/image";
-import { FC } from "react";
-import NextLink from "next/link";
-import { Inter } from "next/font/google";
-import { home } from "../content";
+import { useEffect, useState } from "react";
+import { home, benefits, faqs, testimonials, theTeam } from "../content";
+import { useInView } from "react-intersection-observer";
 import FeaturesCard from "@/components/featuresCard";
 import TeamCard from "@/components/teamCard";
-
-const inter = Inter({ subsets: ["latin"] });
-
-type ContentProps = {
-  featuresContent: Array<{
-    title: string;
-    detail: string;
-    id: number;
-  }>;
-  heroContent: {
-    title: string;
-    detail: string;
-  };
-  featuresHeader: {
-    title: string;
-    detail: string;
-  };
-};
+import DesktopMarquee from "@/components/desktopMarquee";
+import MobileMarquee from "@/components/mobileMarquee";
+import TestimonialWrapper from "@/components/testimonialsWrapper";
+import Testimonial from "@/components/testimonial";
+import Benefit from "@/components/benefit";
+import FaqWrapper from "@/components/faqWrapper";
+import FaqUnit from "@/components/faq";
+import ContentHeader from "@/components/contentHeaders";
+import BenefitsWrapper from "@/components/benefitsWrapper";
+import SkillhiveNumbersWrapper from "@/components/skillhiveNumbersWrapper";
+import SkillhiveNumbers from "@/components/skillhiveNumbers";
+import FeaturesCardsWrapper from "@/components/featuresCardsWrapper";
+import HeroWrapper from "@/components/heroWrapper";
+import { ContentProps } from "@/types";
 
 export default function Home({
   featuresContent,
   heroContent,
   featuresHeader,
+  benefitsContent,
+  faqsContent,
+  testimonialsContent,
+  theTeamContent,
 }: ContentProps) {
+  const [applicantNo, setApplicantNo] = useState(0);
+  const [studentNo, setStudentNo] = useState(0);
+  const currentStudents = 70;
+  const currentApplicants = 370;
+  const { ref, inView, entry } = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      if (studentNo !== currentStudents) {
+        setTimeout(() => {
+          setStudentNo(studentNo + 1);
+        }, 5);
+      }
+      if (applicantNo !== currentApplicants) {
+        setTimeout(() => {
+          setApplicantNo(applicantNo + 1);
+        }, 5);
+      }
+    }
+  }, [inView, studentNo, applicantNo, currentApplicants, currentStudents]);
+
   return (
     <main>
-      <div className="hero min-h-max md:min-h-screen bg-gradient-to-r from-blue-800 via-blue-400 to-purple-300 text-white py-12">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <Image
-            src="/images/main-image.jpg"
-            alt="Server photo"
-            width={450}
-            height={500}
-            className="rotate-90 rounded-lg shadow-2xl invisible md:visible hidden md:block"
-          />
-          <div className="md:pr-28">
-            <h1 className="md:text-5xl text-4xl font-bold">
-              {heroContent?.title}
-            </h1>
-            <p className="py-6">{heroContent?.detail}</p>
-          </div>
-        </div>
+      {/* Hero section */}
+      <div className="hero min-h-max md:min-h-screen bg-gradient-to-r from-primaryColor to-darkNuetral text-lightNuetral py-12">
+        <HeroWrapper title={heroContent?.title} content={heroContent?.detail} />
       </div>
 
+      {/* Features Section */}
       <div
-        className="hero min-h-screen bg-base-200 py-20 md:px-16 flex flex-col gap-16"
+        className="py-20 md:px-16 px-5 flex flex-col gap-16 justify-center items-center md:items-start bg-darkNuetral"
         id="features"
       >
-        <div className="flex flex-col items-center">
-          <h1 className="md:text-4xl text-3xl text-blue-800 font-bold pt-12 px-12">
-            {featuresHeader?.title}
-          </h1>
-          <p className="p-5 text-lg">{featuresHeader?.detail}</p>
-        </div>
-        <div className="flex flex-wrap gap-20 justify-center md:justify-normal">
+        <ContentHeader
+          text={featuresHeader?.title}
+          details={featuresHeader?.detail}
+        />
+        <FeaturesCardsWrapper>
           {featuresContent?.map((item) => (
             <FeaturesCard
               key={item.title}
@@ -69,49 +77,117 @@ export default function Home({
               id={item.id}
             />
           ))}
-        </div>
+        </FeaturesCardsWrapper>
       </div>
 
+      {/* Skillhive in Numbers Section */}
+
       <div
-        className="hero bg-white py-20 md:px-16 flex flex-col gap-24"
-        id="the-team"
+        className="bg-lightNuetral py-20 md:px-16 px-5 flex flex-col gap-16 items-center"
+        ref={ref}
       >
-        <div className="flex flex-col items-center">
-          <h1 className="md:text-4xl text-3xl text-blue-800 font-bold pt-12 px-12">
-            Meet the team
-          </h1>
-        </div>
+        <ContentHeader text="SkillHive365 In Numbers" details={undefined} />
 
-        <div className="relative flex overflow-hidden w-screen">
-          <div className="animate-marquee whitespace-nowrap">
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-          </div>
+        <SkillhiveNumbersWrapper>
+          <SkillhiveNumbers
+            num={applicantNo}
+            description="Recent SkillHive365 Applicants"
+          />
+          <div className="divider divider-horizontal"></div>
+          <SkillhiveNumbers
+            num={studentNo}
+            description="Current Skillhive365 Students"
+          />
+        </SkillhiveNumbersWrapper>
+      </div>
 
-          <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-            <TeamCard />
-          </div>
-        </div>
+      {/* The Team Section */}
+      <div className="bg-darkNuetral py-20 flex flex-col gap-24" id="the-team">
+        <ContentHeader text="Meet the team" details={undefined} />
+
+        <DesktopMarquee>
+          {theTeamContent?.map((item, i) => (
+            <TeamCard
+              key={i}
+              name={item.name}
+              imageLink={item.imageLink}
+              about={item.about}
+            />
+          ))}
+        </DesktopMarquee>
+
+        <MobileMarquee animationDirection="reverse">
+          {theTeamContent?.map((item, i) => (
+            <TeamCard
+              key={i}
+              name={item.name}
+              imageLink={item.imageLink}
+              about={item.about}
+            />
+          ))}
+        </MobileMarquee>
+
+        <MobileMarquee animationDirection="normal">
+          {theTeamContent?.map((item, i) => (
+            <TeamCard
+              key={i}
+              name={item.name}
+              imageLink={item.imageLink}
+              about={item.about}
+            />
+          ))}
+        </MobileMarquee>
+      </div>
+
+      {/* Testimonial Section */}
+      <div
+        className="bg-lightNuetral flex flex-col justify-center items-center gap-16 pt-20 pb-8 md:px-16"
+        id="testimonials"
+      >
+        <ContentHeader text="Testimonials" details={undefined} />
+        <TestimonialWrapper>
+          {testimonialsContent?.map((item, i) => (
+            <Testimonial
+              key={i}
+              name={item.name}
+              testimonial={item.testimonial}
+            />
+          ))}
+        </TestimonialWrapper>
+      </div>
+
+      {/* Benefits Section */}
+      <div
+        className="hero min-h-screen py-20 md:px-16 bg-darkNuetral flex flex-col gap-16 items-center"
+        id="benefits"
+      >
+        <ContentHeader text="Why Us" details={undefined} />
+        <BenefitsWrapper>
+          {benefitsContent?.map((item, i) => (
+            <Benefit
+              key={i}
+              title={item.title}
+              description={item.description}
+            />
+          ))}
+        </BenefitsWrapper>
+      </div>
+
+      {/* Faqs section */}
+      <div
+        className="py-20 md:px-16 bg-lightNuetral flex flex-col gap-5 items-center"
+        id="faq"
+      >
+        <ContentHeader text="FAQs" details={undefined} />
+        <FaqWrapper>
+          {faqsContent?.map((item, i) => (
+            <FaqUnit key={i} question={item.question} answer={item.answer} />
+          ))}
+        </FaqWrapper>
       </div>
     </main>
   );
 }
-
-// Home.defaultProps = {
-//   content: {
-//     features: [{ title: "default feature", body: "default body" }],
-//     hero: { title: "default title", body: "default body" },
-//   },
-// };
 
 export function getStaticProps() {
   return {
@@ -119,13 +195,10 @@ export function getStaticProps() {
       featuresContent: home.featuresContent,
       heroContent: home.heroContent,
       featuresHeader: home.featuresHeader,
+      benefitsContent: benefits,
+      faqsContent: faqs,
+      testimonialsContent: testimonials,
+      theTeamContent: theTeam,
     },
   };
 }
-
-//palette
-//Primary: #5599DD
-//Secondary: #4CB944
-//Dark Shade: #F5EE9E
-//Light Shade: #FDFFFC
-//Minor: #F06543

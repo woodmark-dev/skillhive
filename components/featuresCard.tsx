@@ -12,7 +12,7 @@ export default function FeaturesCard({
   id: number;
 }) {
   return (
-    <div className="card w-80 bg-base-100 shadow-xl">
+    <div className="card w-80 bg-[#edf4ed] shadow-xl">
       <figure>
         <Image
           src="/images/main-image.jpg"
@@ -26,7 +26,10 @@ export default function FeaturesCard({
         <h2 className="card-title">{title}</h2>
         <p>{detail}...</p>
         <div className="card-actions justify-end">
-          <label htmlFor={`my-modal-${id}`} className="btn">
+          <label
+            htmlFor={`my-modal-${id}`}
+            className="btn bg-[#6b2737] text-[#edf4ed] hover:bg-[#6b2737]"
+          >
             Learn more
           </label>
         </div>
