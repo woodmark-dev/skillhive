@@ -12,30 +12,35 @@ export const home = {
   featuresContent: [
     {
       title: "Web Development",
+      imageLink: "/images/features/web.png",
       detail:
         "Our web development course covers the fundamentals of HTML, CSS, and JavaScript, as well as more advanced topics such as responsive design and server-side programming. Students will learn how to build dynamic, interactive websites from scratch and will gain practical experience with industry-standard tools such as Git, GitHub, and Visual Studio Code. Upon completion of this course, students will have the skills to pursue careers as front-end or back-end web developers, freelance web designers, or web developers in various industries.",
       id: 1,
     },
     {
       title: "UI/UX Design",
+      imageLink: "/images/features/ui-ux.jpg",
       detail:
         "Our UI/UX design course teaches students how to create beautiful and functional user interfaces for web and mobile applications. Students will learn the principles of user-centered design, wireframing, prototyping, and user testing, and will gain practical experience with tools such as Sketch, Figma, and InVision. Upon completion of this course, students will have the skills to pursue careers as UI/UX designers, interaction designers, or product designers.",
       id: 2,
     },
     {
       title: "Data Analysis",
+      imageLink: "/images/features/data.jpg",
       detail:
         "Our data analysis course teaches students how to use data to make informed decisions and solve real-world problems. Students will learn how to collect, clean, analyze, and visualize data using Python and industry-standard libraries such as Pandas, Numpy, and Matplotlib. Upon completion of this course, students will have the skills to pursue careers as data analysts, business analysts, or data scientists in various industries.",
       id: 3,
     },
     {
       title: "Android App Development with Kotlin",
+      imageLink: "/images/features/andriod.jpg",
       detail:
         "Our Android app development course teaches students how to build native Android applications using Kotlin, a modern programming language preferred by many developers. Students will learn how to design user interfaces, handle user input, access device features such as camera and GPS, and connect to remote APIs. Upon completion of this course, students will have the skills to pursue careers as Android developers or freelance app developers.",
       id: 4,
     },
     {
       title: "Python Programming for Development",
+      imageLink: "/images/features/ai.jpg",
       detail:
         "Learn Python quickly with this introductory course! Even without prior programming experience, you'll discover the basics and data types, as well as Python's data structures and logic concepts. Plus, you'll work with libraries like Pandas, Numpy, and Beautiful Soup for tasks like web scraping. Practice with hands-on labs and Jupyter Notebooks to gain confidence creating programs and automating real-world tasks. Suitable for aspiring professionals in a variety of fields, including Data Science, Software Development, AI, and DevOps.",
       id: 5,
@@ -148,6 +153,18 @@ export const theTeam = [
     imageLink: "/images/team/ibrahim.JPG",
     about:
       "Dari Ibrahim Ayuba is a professional web developer. He loves building stuff, everyday-learning, and collaborating with fellow developers",
+  },
+  {
+    name: "Abdulraheem Bashir",
+    imageLink: "/images/team/bashir.jpg",
+    about:
+      "Abdulraheem Bashir is a Data Analyst at Natview Foundation for Technology Innovation with 5 years of experience in Tech and Data space. He loves using his skills to positively benefit society.",
+  },
+  {
+    name: "Sherif Usman",
+    imageLink: "/images/team/sherif.jpg",
+    about:
+      "Sherif Usman is a UI/UX designer and graphics designer with two years of experience. He loves learning new tech skills and participating in innovative talks.",
   },
 ];
 

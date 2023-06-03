@@ -1,5 +1,6 @@
 export type ContentProps = {
   featuresContent: Array<{
+    imageLink: string;
     title: string;
     detail: string;
     id: number;

@@ -60,7 +60,7 @@ export default function Home({
 
       {/* Features Section */}
       <div
-        className="py-20 md:px-16 px-5 flex flex-col gap-16 justify-center items-center md:items-start bg-darkNuetral"
+        className="py-20 md:px-16 px-5 flex flex-col gap-16 justify-center items-center md:items-start bg-lightNuetral"
         id="features"
       >
         <ContentHeader
@@ -68,9 +68,10 @@ export default function Home({
           details={featuresHeader?.detail}
         />
         <FeaturesCardsWrapper>
-          {featuresContent?.map((item) => (
+          {featuresContent?.map((item, i) => (
             <FeaturesCard
-              key={item.title}
+              key={item.id}
+              imageLink={item.imageLink}
               title={item.title}
               detail={item.detail.split(" ").slice(0, 12).join(" ")}
               fullDetail={item.detail}
@@ -83,7 +84,7 @@ export default function Home({
       {/* Skillhive in Numbers Section */}
 
       <div
-        className="bg-lightNuetral py-20 md:px-16 px-5 flex flex-col gap-16 items-center"
+        className="bg-darkNuetral py-20 md:px-16 px-5 flex flex-col gap-16 items-center"
         ref={ref}
       >
         <ContentHeader text="SkillHive365 In Numbers" details={undefined} />
@@ -102,7 +103,7 @@ export default function Home({
       </div>
 
       {/* The Team Section */}
-      <div className="bg-darkNuetral py-20 flex flex-col gap-24" id="the-team">
+      <div className="bg-lightNuetral py-20 flex flex-col gap-24" id="the-team">
         <ContentHeader text="Meet the team" details={undefined} />
 
         <DesktopMarquee>
@@ -117,31 +118,35 @@ export default function Home({
         </DesktopMarquee>
 
         <MobileMarquee animationDirection="reverse">
-          {theTeamContent?.map((item, i) => (
-            <TeamCard
-              key={i}
-              name={item.name}
-              imageLink={item.imageLink}
-              about={item.about}
-            />
-          ))}
+          {theTeamContent
+            ?.map((item, i) => (
+              <TeamCard
+                key={i}
+                name={item.name}
+                imageLink={item.imageLink}
+                about={item.about}
+              />
+            ))
+            .splice(0, 4)}
         </MobileMarquee>
 
         <MobileMarquee animationDirection="normal">
-          {theTeamContent?.map((item, i) => (
-            <TeamCard
-              key={i}
-              name={item.name}
-              imageLink={item.imageLink}
-              about={item.about}
-            />
-          ))}
+          {theTeamContent
+            ?.map((item, i) => (
+              <TeamCard
+                key={i}
+                name={item.name}
+                imageLink={item.imageLink}
+                about={item.about}
+              />
+            ))
+            .splice(3)}
         </MobileMarquee>
       </div>
 
       {/* Testimonial Section */}
       <div
-        className="bg-lightNuetral flex flex-col justify-center items-center gap-16 pt-20 pb-8 md:px-16"
+        className="bg-darkNuetral flex flex-col justify-center items-center gap-16 pt-20 pb-8 md:px-16"
         id="testimonials"
       >
         <ContentHeader text="Testimonials" details={undefined} />
@@ -158,7 +163,7 @@ export default function Home({
 
       {/* Benefits Section */}
       <div
-        className="hero min-h-screen py-20 md:px-16 bg-darkNuetral flex flex-col gap-16 items-center"
+        className="hero min-h-screen py-20 md:px-16 bg-lightNuetral flex flex-col gap-16 items-center"
         id="benefits"
       >
         <ContentHeader text="Why Us" details={undefined} />
@@ -175,7 +180,7 @@ export default function Home({
 
       {/* Faqs section */}
       <div
-        className="py-20 md:px-16 bg-lightNuetral flex flex-col gap-5 items-center"
+        className="py-20 md:px-16 bg-darkNuetral flex flex-col gap-5 items-center"
         id="faq"
       >
         <ContentHeader text="FAQs" details={undefined} />
