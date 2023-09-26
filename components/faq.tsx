@@ -11,14 +11,12 @@ export default function FaqUnit({
     <div className="py-5">
       <details className="group">
         <summary className="flex cursor-pointer list-none items-center justify-between font-medium">
-          <span>{question}</span>
+          <span className="font-bold">{question}</span>
           <span className="transition group-open:rotate-180">
             <HiChevronDown />
           </span>
         </summary>
-        <p className="group-open:animate-fadeIn mt-3 text-neutral-600">
-          {answer}
-        </p>
+        <p className="group-open:animate-fadeIn mt-3 text-black">{answer}</p>
       </details>
     </div>
   );

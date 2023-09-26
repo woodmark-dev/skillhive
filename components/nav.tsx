@@ -16,7 +16,9 @@ export default function Nav() {
             className="navbar z-20 text-[#edf4ed] md:pr-10 h-16"
           >
             <div className="navbar-start">
-              <a className="btn btn-ghost normal-case text-xl">SkillHive</a>
+              <a className="btn btn-ghost normal-case text-xl text-blue-900">
+                SkillHive
+              </a>
             </div>
             <div className="navbar-end hidden lg:flex font-bold tracking-wide">
               <ul className="menu menu-horizontal px-1">

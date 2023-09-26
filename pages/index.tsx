@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import { home, benefits, faqs, testimonials, theTeam } from "../content";
 import { useInView } from "react-intersection-observer";
 import FeaturesCard from "@/components/featuresCard";
-import TeamCard from "@/components/teamCard";
-import DesktopMarquee from "@/components/desktopMarquee";
-import MobileMarquee from "@/components/mobileMarquee";
 import TestimonialWrapper from "@/components/testimonialsWrapper";
 import Testimonial from "@/components/testimonial";
 import Benefit from "@/components/benefit";
@@ -17,6 +14,8 @@ import SkillhiveNumbers from "@/components/skillhiveNumbers";
 import FeaturesCardsWrapper from "@/components/featuresCardsWrapper";
 import HeroWrapper from "@/components/heroWrapper";
 import { ContentProps } from "@/types";
+import TeamsCard2 from "@/components/newsCard2";
+import TeamsCardMobile from "@/components/teamsCardMobile";
 
 export default function Home({
   featuresContent,
@@ -103,45 +102,32 @@ export default function Home({
       </div>
 
       {/* The Team Section */}
-      <div className="bg-lightNuetral py-20 flex flex-col gap-24" id="the-team">
+      <div className="bg-lightNuetral py-20" id="the-team">
         <ContentHeader text="Meet the team" details={undefined} />
 
-        <DesktopMarquee>
+        {/* Desktop View */}
+        <div className="md:flex pt-12 md:px-16 gap-8 flex-wrap hidden">
           {theTeamContent?.map((item, i) => (
-            <TeamCard
+            <TeamsCard2
               key={i}
               name={item.name}
               imageLink={item.imageLink}
-              about={item.about}
+              introduction={item.about}
             />
           ))}
-        </DesktopMarquee>
+        </div>
 
-        <MobileMarquee animationDirection="reverse">
-          {theTeamContent
-            ?.map((item, i) => (
-              <TeamCard
-                key={i}
-                name={item.name}
-                imageLink={item.imageLink}
-                about={item.about}
-              />
-            ))
-            .splice(0, 4)}
-        </MobileMarquee>
-
-        <MobileMarquee animationDirection="normal">
-          {theTeamContent
-            ?.map((item, i) => (
-              <TeamCard
-                key={i}
-                name={item.name}
-                imageLink={item.imageLink}
-                about={item.about}
-              />
-            ))
-            .splice(3)}
-        </MobileMarquee>
+        {/* Mobile View */}
+        <div className="scroll-box scrollbar-hide mt-12 flex gap-10 w-full snap-x snap-mandatory scroll-px-10 overflow-x-scroll scroll-smooth md:hidden">
+          {theTeamContent?.map((item, i) => (
+            <TeamsCardMobile
+              key={i}
+              name={item.name}
+              imageLink={item.imageLink}
+              introduction={item.about}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Testimonial Section */}

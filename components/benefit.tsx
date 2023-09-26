@@ -29,7 +29,7 @@ export default function Benefit({ title, description }: BenefitProps) {
       </div>
       <div className="flex flex-col gap-3">
         <h2 className="text-xl font-bold text-[#3943b7]">{title}</h2>
-        <p className="pr-4 md:pr-0">{description}</p>
+        <p className="pr-4 md:pr-0 text-black">{description}</p>
       </div>
     </div>
   );

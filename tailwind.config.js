@@ -14,6 +14,12 @@ module.exports = withMT({
       },
     },
     extend: {
+      spacing: {
+        128: "32rem",
+        140: "35rem",
+        150: "37.5rem",
+        160: "40rem",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

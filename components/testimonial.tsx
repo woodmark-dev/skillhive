@@ -18,18 +18,20 @@ export default function Testimonial({
           <p className="text-center md:w-96 font-bold md:pr-0">{testimonial}</p>
         </div>
         <div className="flex gap-7 items-center">
-          <div className="avatar">
+          {/* <div className="avatar">
             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              {/* <Image
+              <Image
                 src="/images/ibrahim.JPG"
                 alt="image 3"
                 width={450}
                 height={500}
-              /> */}
+              /> 
             </div>
-          </div>
+          </div> */}
           <div>
-            <p>{name}</p>
+            <p className="text-black font-serif text-lg font-extrabold">
+              {name}
+            </p>
           </div>
         </div>
       </div>

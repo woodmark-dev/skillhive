@@ -10,7 +10,9 @@ export default function Footer() {
     <footer className="footer items-center justify-between text-lightNuetral p-4 bg-gradient-to-r from-darkNuetral to-primaryColor">
       <div className="flex items-center justify-between order-1">
         <div>
-          <a className="btn btn-ghost normal-case text-xl">SkillHive</a>
+          <a className="btn btn-ghost normal-case text-xl text-blue-900">
+            SkillHive
+          </a>
         </div>
       </div>
       <div className="md:order-2 order-3">

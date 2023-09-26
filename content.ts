@@ -166,6 +166,11 @@ export const theTeam = [
     about:
       "Sherif Usman is a UI/UX designer and graphics designer with two years of experience. He loves learning new tech skills and participating in innovative talks.",
   },
+  {
+    name: "Abdulsamad Muhammad",
+    imageLink: "/images/team/abdulsamad.jpg",
+    about: "Abdulsamad is a web developer and a blockchain enthusiast"
+  }
 ];
 
 export const menu = [

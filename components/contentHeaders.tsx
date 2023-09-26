@@ -10,7 +10,9 @@ export default function ContentHeader({
       <h1 className="md:text-4xl text-3xl text-primaryColor font-bold pt-12 text-center">
         {text}
       </h1>
-      {details && <p className="text-lg text-center pt-3">{details}</p>}
+      {details && (
+        <p className="text-lg text-center pt-3 text-black">{details}</p>
+      )}
     </div>
   );
 }
